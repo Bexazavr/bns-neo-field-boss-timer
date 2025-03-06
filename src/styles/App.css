@@ -94,23 +94,30 @@ button:hover {
   color: #fff;
 }
 
-
-
 /* Active Channels */
 #active-channels {
   background: rgba(0, 0, 0, 0.8);
   padding: 20px 20px 40px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
   color: #fff;
+  opacity: 0;
   transform: translateY(20px);
-  transition:
-    opacity 0.5s ease,
-    transform 0.5s ease;
+  transition: all 0.5s ease;
 }
 
 #active-channels.show {
   opacity: 1;
   transform: translateY(0);
+}
+
+#active-channels.hide {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+/* Анимация для контейнера таймеров */
+#active-channels .row {
+  transition: all 0.3s ease;
 }
 
 .active-channel__name {
@@ -125,4 +132,37 @@ button:hover {
   padding: 5px 10px;
   border-radius: 6px;
   border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Анимации для таймеров */
+@keyframes fadeInScale {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOutScale {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+}
+
+.timer-item {
+  animation: fadeInScale 0.3s ease-out forwards;
+  transform-origin: center;
+}
+
+.timer-item.removing {
+  animation: fadeOutScale 0.3s ease-out forwards;
+  transform-origin: center;
 }
