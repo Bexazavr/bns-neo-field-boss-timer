@@ -1,0 +1,128 @@
+body {
+  font-family: "Roboto", sans-serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  text-align: center;
+  background: url("https://i.imgur.com/h3HVEdc.jpeg") no-repeat center center fixed;
+  background-size: cover;
+  color: #ff6f00;
+  height: 100%;
+  overflow-y: auto;
+}
+
+h1,
+h2 {
+  color: #ff6f00;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9);
+  letter-spacing: 0.2rem;
+}
+
+.channel-section {
+  background: rgba(0, 0, 0, 0.85);
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+.channel-section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+button {
+  transition: transform 3s ease;
+}
+
+button:hover {
+  background: linear-gradient(90deg, #ff4500, #ff6f00);
+  transform: scale(1.02);
+}
+
+/* Button for Adding New Channel */
+#add-channel-btn {
+  width: 200px;
+}
+
+#add-channel-btn:hover {
+  transform: scale(1.05);
+}
+
+.timer {
+  font-size: 18px;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #ff6f00;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 12px;
+  padding: 10px 15px;
+  display: none;
+  border: 1px solid rgba(255, 204, 0, 0.5);
+  text-shadow: 2px 2px 6px rgba(255, 204, 0, 0.8);
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+.timer.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Error Message */
+#error-message {
+  color: yellow;
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 20px;
+  display: none;
+}
+
+/* How to Use Section */
+.how-to-use {
+  background: rgba(0, 0, 0, 0.85);
+
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+
+  transition: all 0.5s ease;
+  /* Анимация для margin-top */
+}
+
+.how-to-use p {
+  color: #fff;
+}
+
+
+
+/* Active Channels */
+#active-channels {
+  background: rgba(0, 0, 0, 0.8);
+  padding: 20px 20px 40px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+  color: #fff;
+  transform: translateY(20px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+#active-channels.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.active-channel__name {
+  font-weight: bold;
+  color: #ff6f00;
+}
+
+.active-channel__timer {
+  font-weight: bold;
+  color: #4caf50;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 5px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
