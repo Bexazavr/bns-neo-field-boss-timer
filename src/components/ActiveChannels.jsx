@@ -58,7 +58,7 @@ const ActiveChannels = ({ activeTimers, removeActiveTimer }) => {
 	// Получение сообщения о респавне
 	const getRespawnMessage = (seconds) => {
 		const absSeconds = Math.abs(seconds);
-		
+
 		switch (true) {
 			case seconds > 15:
 				return {
@@ -134,7 +134,6 @@ const ActiveChannels = ({ activeTimers, removeActiveTimer }) => {
 			<div className="row flex-column gap-3 align-items-center p-3">
 				{sortedTimers.map((timer) => {
 					const message = getRespawnMessage(timeLeft[timer.id]);
-					const showTimer = !message; // Показываем таймер только если нет сообщения
 
 					return (
 						<div
@@ -166,23 +165,13 @@ const ActiveChannels = ({ activeTimers, removeActiveTimer }) => {
 									<span
 										className={`badge text-bg-${getMessageColor(
 											timeLeft[timer.id]
-										)} text-light fs-4 ms-1 `}
+										)} text-light fs-4 ms-1`}
 									>
 										{message.seconds}
 										{message.suffix}
 									</span>
 								</span>
 							</div>
-							{/* <div className="d-flex align-items-center gap-3 ms-3">
-								{showTimer && (
-									<div
-										className="p-2 rounded-3 border border-dark bg-light text-dark"
-										style={{ minWidth: "60px", textAlign: "center" }}
-									>
-										{formatTime(timeLeft[timer.id] || 0)}
-									</div>
-								)}
-							</div> */}
 						</div>
 					);
 				})}

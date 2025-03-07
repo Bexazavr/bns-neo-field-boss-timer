@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import ChannelContainer from "./components/ChannelContainer"; // Новый компонент
+import ChannelContainer from "./components/ChannelContainer";
 import ActiveChannels from "./components/ActiveChannels";
-import HowToUse from "./components/HowToUse";
 import "./styles/App.css";
 
 const App = ({ maxChannels = 30 }) => {
@@ -20,14 +19,13 @@ const App = ({ maxChannels = 30 }) => {
 
 	const deleteChannel = (id) => {
 		setChannels(channels.filter((channel) => channel.id !== id));
-		setActiveTimers(activeTimers.filter((timer) => timer.channelId !== id)); // Удаляем таймеры этого канала
+		setActiveTimers(activeTimers.filter((timer) => timer.channelId !== id));
 		if (channels.length === 1) {
-			setHasChannels(false); // Если удален последний канал, скрываем контейнер
+			setHasChannels(false);
 		}
 	};
 
 	const addActiveTimer = (channelId, channelName, timerName, duration) => {
-		// Удаляем старый таймер для этого канала, если он существует
 		setActiveTimers((prevTimers) =>
 			prevTimers.filter((timer) => timer.channelId !== channelId)
 		);
@@ -50,7 +48,7 @@ const App = ({ maxChannels = 30 }) => {
 	return (
 		<div className="app">
 			<div className="container-fluid">
-				<h1 class="mb-3">BnS Neo Field Boss Timer</h1>
+				<h1 className="mb-3">BnS Neo Field Boss Timer</h1>
 				<ActiveChannels
 					activeTimers={activeTimers}
 					removeActiveTimer={removeActiveTimer}
@@ -69,7 +67,6 @@ const App = ({ maxChannels = 30 }) => {
 				>
 					Add New Timer
 				</button>
-				{/* <HowToUse hasChannels={hasChannels} /> */}
 			</div>
 		</div>
 	);
