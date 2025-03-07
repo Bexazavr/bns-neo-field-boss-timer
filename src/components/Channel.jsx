@@ -101,7 +101,7 @@ const Channel = ({ id, addActiveTimer, deleteChannel }) => {
 				)}
 			</div>
 			<div className="button-timer-container">
-			{/* <button
+				{/* <button
 					className="btn btn-warning w-100 p-1 mb-3 fs-5 fw-bold rounded-3"
 					onClick={() => handleStartTimer(-55, "Test (-55 sec)")}
 				>
