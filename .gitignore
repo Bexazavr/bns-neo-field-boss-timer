@@ -1,18 +1,41 @@
-node_modules/
+# Dependencies and lock files
+/node_modules/
+yarn.lock
+package-lock.json
+.pnp*
+.pnp.js
 
+# Build artifacts
 /build
 /dist
 
+/.coverage
+*.lcov
+
+# Cache files
 /.cache
+/.eslintcache
+/.prettiercache
+/jest-cache
+
+# Environment variables
 /.env.local
 /.env.development.local
 /.env.test.local
 /.env.production.local
 
+# Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+*.test.log
 
+# Temporary files
+*.bak
+*.tmp
+webpack-stats.json
+
+# Editor and IDE-specific files
 /.idea
 /.vscode
 /.vs
@@ -22,18 +45,6 @@ yarn-error.log*
 *.sln
 *.sw?
 
+# OS-specific files
 .DS_Store
 Thumbs.db
-
-
-yarn.lock
-.pnp*
-.pnp.js
-
-/coverage
-
-.eslintcache
-
-.prettiercache
-
-/jest-cache
