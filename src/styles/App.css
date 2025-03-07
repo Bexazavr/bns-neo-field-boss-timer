@@ -17,7 +17,7 @@ h2 {
 }
 
 .channel-section {
-  background-color: #1a1a1a;
+  background: rgba(0, 0, 0, 0.8);
   border-radius: 15px;
   transition: all 0.3s ease-in-out;
   opacity: 1;
