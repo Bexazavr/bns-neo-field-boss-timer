@@ -69,7 +69,7 @@ const App = ({ maxChannels = 30 }) => {
 				>
 					Add New Timer
 				</button>
-				<HowToUse hasChannels={hasChannels} />
+				{/* <HowToUse hasChannels={hasChannels} /> */}
 			</div>
 		</div>
 	);

@@ -17,21 +17,28 @@ h2 {
 }
 
 .channel-section {
-  background: rgba(0, 0, 0, 0.85);
+  background-color: #1a1a1a;
+  border-radius: 15px;
+  transition: all 0.3s ease-in-out;
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  position: relative;
+  z-index: 1;
+}
+
+.channel-section.deleting {
   opacity: 0;
-  transform: translateY(20px);
-  transition:
-    opacity 0.5s ease,
-    transform 0.5s ease;
+  transform: scale(0.8) translateY(30px);
+  pointer-events: none;
 }
 
 .channel-section.show {
   opacity: 1;
-  transform: translateY(0);
+  transform: scale(1) translateY(0);
 }
 
 button {
-  transition: transform 3s ease;
+  transition: transform 1s ease;
 }
 
 button:hover {
@@ -165,4 +172,26 @@ button:hover {
 .timer-item.removing {
   animation: fadeOutScale 0.3s ease-out forwards;
   transform-origin: center;
+}
+
+.active-channels {
+  transition: all 0.3s ease;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.active-channels.hide {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+.timer-item {
+  transition: all 0.3s ease;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.timer-item.removing {
+  opacity: 0;
+  transform: translateX(100%);
 }

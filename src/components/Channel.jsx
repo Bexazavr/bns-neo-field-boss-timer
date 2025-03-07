@@ -6,6 +6,7 @@ const Channel = ({ id, addActiveTimer, deleteChannel }) => {
 	const [isEditing, setIsEditing] = useState(false); // Режим редактирования
 	const [editablePart, setEditablePart] = useState(id.toString()); // Изменяемая часть названия
 	const [isVisible, setIsVisible] = useState(false);
+	const [isDeleting, setIsDeleting] = useState(false);
 
 	useEffect(() => {
 		const timer = setTimeout(() => {
@@ -36,7 +37,11 @@ const Channel = ({ id, addActiveTimer, deleteChannel }) => {
 	};
 
 	const handleDelete = () => {
-		deleteChannel(id); // Вызываем функцию удаления
+		setIsDeleting(true);
+		// Ждем завершения анимации перед удалением
+		setTimeout(() => {
+			deleteChannel(id);
+		}, 300);
 	};
 
 	const handleStartTimer = (duration, timerName) => {
@@ -46,9 +51,16 @@ const Channel = ({ id, addActiveTimer, deleteChannel }) => {
 	return (
 		<div
 			id={`${channelName.replace(/\s+/g, "-").toLowerCase()}`} // Уникальный id на основе полного названия
-			className={`col-12 col-lg-4 col-xxl-2 shadow p-4 border border-light border-opacity-25 text-center channel-section ${
+			className={`col-12 col-lg-4 col-xxl-2 shadow p-4 border border-light border-opacity-25 text-center rounded-3 channel-section ${
 				isVisible ? "show" : ""
-			}`}
+			} ${isDeleting ? "deleting" : ""}`}
+			style={{
+				transition: "all 0.1s ease-in-out",
+				transform: isDeleting
+					? "scale(0.8) translateY(30px)"
+					: "scale(1) translateY(0)",
+				opacity: isDeleting ? 0 : 1,
+			}}
 		>
 			<div className="channel-header">
 				{isEditing ? (
@@ -89,6 +101,30 @@ const Channel = ({ id, addActiveTimer, deleteChannel }) => {
 				)}
 			</div>
 			<div className="button-timer-container">
+			{/* <button
+					className="btn btn-warning w-100 p-1 mb-3 fs-5 fw-bold rounded-3"
+					onClick={() => handleStartTimer(-55, "Test (-55 sec)")}
+				>
+					Test (-55 sec)
+				</button>
+				<button
+					className="btn btn-warning w-100 p-1 mb-3 fs-5 fw-bold rounded-3"
+					onClick={() => handleStartTimer(5, "Test (5 sec)")}
+				>
+					Test (5 sec)
+				</button>
+				<button
+					className="btn btn-warning w-100 p-1 mb-3 fs-5 fw-bold rounded-3"
+					onClick={() => handleStartTimer(25, "Test (25 sec)")}
+				>
+					Test (25 sec)
+				</button>
+				<button
+					className="btn btn-warning w-100 p-1 mb-3 fs-5 fw-bold rounded-3"
+					onClick={() => handleStartTimer(35, "Test (35 sec)")}
+				>
+					Test (35 sec)
+				</button> */}
 				<button
 					className="btn btn-warning w-100 p-1 mb-3 fs-5 fw-bold rounded-3"
 					onClick={() => handleStartTimer(300, "Regular Dead (5 Min)")}
@@ -108,14 +144,10 @@ const Channel = ({ id, addActiveTimer, deleteChannel }) => {
 					Mutant Dead (8 Min)
 				</button>
 			</div>
-			<div className="timer-container">
-				<div className="timer" id={`channel${id}_boss_normal`}></div>
-				<div className="timer" id={`channel${id}_mutant_portal`}></div>
-				<div className="timer" id={`channel${id}_mutant_dead`}></div>
-			</div>
+
 			<button
 				className="delete-btn btn btn-danger w-100 py-1 fs-5 fw-bold rounded-3"
-				onClick={handleDelete} // Обработчик удаления
+				onClick={handleDelete}
 			>
 				Delete Channel
 			</button>
